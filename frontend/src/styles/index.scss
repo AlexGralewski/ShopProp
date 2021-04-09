@@ -11,44 +11,67 @@ ul {
   list-style: none;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 nav {
-  width: 100%;
-  height: 100px;
+  max-width: 100%;
+  padding: 20px;
+  height: 50px;
   background-color: black;
   color: white;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  text-transform: uppercase;
 
   .nav-logo {
-    font-size: 50px;    
-  }
-  ul {
-    display: flex;
-    justify-content: space-around;
-  }
-  a {
-    text-decoration: none;
-    color: inherit;
+    margin: 0 10px;
+    font-size: 30px;    
   }
 
   .toggle-button {
-    font-size: 30px;
-    width: 50px;
-    height: 50px;
+    font-size: 25px;
+    width: 40px;
+    height: 40px;
     border: white 1px solid;
     border-radius: 5px;
     background: none;
     color: white;
+    cursor: pointer;
   }
 
   .toggle-button:hover {
-    cursor: pointer;
     background-color: rgb(37, 37, 37);
   }
-  .toggle-button:active {
-    border: white 1px solid;
+
+  .nav-items {
+    width: 300px;
+    font-size: 10px;
+    ul {
+      display: flex;
+      justify-content: space-around;
+      li,a {
+        height: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        i {
+          font-size: 30px;
+        }
+
+      }
+      
+    }
+
+  
   }
+
+
+
 }
 
 .side-menu {
@@ -60,12 +83,19 @@ nav {
   width: 300px;
   z-index: 10;
   color: white;
+  transform: translateX(-100%);
+  transition: ease 0.5s;
   ul {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
   }
+
+}
+
+.side-menu.open{
+  transform: translateX(0);
 }
 
 .backdrop {
@@ -74,12 +104,19 @@ nav {
   position: fixed;
   left: 0;
   top: 0;
-  background-color: rgba(0, 0, 0, 0.555);
+  background-color: rgba(0, 0, 0, 0.39);
   z-index: 9;
 }
 
+.content {
+  min-height: 80vh;
+  width: 100vw;
+  background-color: white;
+}
+
+
 footer {
   height: 50px;
-  background-color: black;
+  background-color: rgb(126, 126, 126);
   color: white;
 }
