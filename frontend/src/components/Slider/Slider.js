@@ -23,8 +23,8 @@ const Slider = () => {
             </div>
         )
       }
-      <button className="slider-btn" id="left" onClick={slideLeft}>Left</button>
-      <button className="slider-btn" id="right" onClick={slideRight}>Right</button>
+      <button className="slider-btn" id="left" onClick={slideLeft}><i class="fas fa-arrow-alt-circle-left fa-3x"></i></button>
+      <button className="slider-btn" id="right" onClick={slideRight}><i class="fas fa-arrow-alt-circle-right fa-3x"></i></button>
       <div className="slides-nav">
         X = {x}
         {sliderImages.map(index =>  <i key={index} className="fas fa-circle slide-dot" id={index} onClick={index => setX(2)}></i>
