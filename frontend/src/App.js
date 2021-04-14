@@ -3,7 +3,7 @@ import Navbar from "./components/Navbar"
 import SideMenu from "./components/SideMenu/SideMenu"
 import Footer from "./components/Footer"
 import Backdrop from "./components/SideMenu/Backdrop"
-import Slider from "./components/Slider"
+import Slider from "./components/Slider/Slider"
 
 
 function App() {
