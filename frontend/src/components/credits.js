@@ -29,7 +29,7 @@ const credits = [
   },
   {
     name: '',
-    author: '',
+    author: 'Photo by The Lazy Artist Gallery from Pexels',
   },
   {
     name: '',

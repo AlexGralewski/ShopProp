@@ -7,6 +7,7 @@ import Slider from "./components/Slider/Slider"
 import Product from "./components/Product"
 import data from "./data"
 
+
 function App() {
   const [isMenuOpen, setMenuOpen] = useState(false)
 

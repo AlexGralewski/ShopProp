@@ -1,40 +1,131 @@
-import React, {useState} from "react"
+import React, { useState, useEffect, useRef } from "react";
+import Slide from "./Slide";
+import SliderContent from "./SliderContent";
+import Dots from "./Dots";
+import slider1 from "../../assets/slider1.jpg";
+import slider2 from "../../assets/slider2.jpg";
+import slider3 from "../../assets/slider3.jpg";
+
+const getWidth = () => window.innerWidth;
 
 const Slider = () => {
-  let sliderImages = [1,2,3,4]
-  const [x, setX] = useState(0)
+  const slides = [slider1, slider2, slider3];
 
-  const slideRight = () => {
-    x === (sliderImages.length - 1) ? setX(0) : setX(x+1)
-  }
-  const slideLeft = () => {
-    x === 0 ? setX((sliderImages.length - 1)) : setX(x-1)
+  const firstSlide = slides[0];
+  const secondSlide = slides[1];
+  const lastSlide = slides[slides.length - 1];
 
-  }
+  const [state, setState] = useState({
+    activeSlide: 0, //active slide index
+    translate: getWidth(), //value of translation
+    transition: 0.45, //transition time
+    currentSlides: [lastSlide, firstSlide, secondSlide], //middle slide from the list is visible
+  });
 
+  const { activeSlide, translate, currentSlides, transition } = state;
 
+  const autoPlayRef = useRef();
+  const transitionRef = useRef();
+  const resizeRef = useRef();
+  const sliderRef = useRef();
+
+  useEffect(() => {
+    autoPlayRef.current = slideRight;
+    transitionRef.current = smoothTransition;
+    resizeRef.current = handleResize;
+  });
+
+  useEffect(() => {
+    const slider = sliderRef.current;
+
+    const play = () => {
+      autoPlayRef.current();
+    };
+
+    const smooth = (e) => {
+      if (e.target.className.includes("SliderContent")) {
+        transitionRef.current();
+      }
+    };
+
+    const resize = () => {
+      resizeRef.current();
+    };
+
+    const transitionEnd = slider.addEventListener("transitionend", smooth);
+    const onResize = window.addEventListener("resize", resize);
+
+    let interval = setInterval(play, 5000);
+
+    return () => {
+      slider.removeEventListener("transitionend", transitionEnd);
+      window.removeEventListener("resize", onResize);
+      clearInterval(interval);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (transition === 0) setState({ ...state, transition: 0.45 });
+  }, [transition]);
+
+  const handleResize = () => {
+    setState({ ...state, translate: getWidth(), transition: 0 });
+  };
+
+  const smoothTransition = () => {
+    let currentSlides = [];
+
+    if (activeSlide === slides.length - 1) {
+      currentSlides = [slides[slides.length - 2], lastSlide, firstSlide];
+    } else if (activeSlide === 0) {
+      currentSlides = [lastSlide, firstSlide, secondSlide];
+    } else {
+      currentSlides = slides.slice(activeSlide - 1, activeSlide + 2)
+    }
+
+    setState({
+      ...state,
+      currentSlides,
+      transition: 0,
+      translate: getWidth()
+    });
+  };
+
+  const slideRight = () =>
+    setState({
+      ...state,
+      translate: translate + getWidth(),
+      activeSlide: activeSlide === slides.length - 1 ? 0 : activeSlide + 1,
+    });
+  const slideLeft = () =>
+    setState({
+      ...state,
+      translate: 0,
+      activeSlide: activeSlide === 0 ? slides.length - 1 : activeSlide - 1,
+    });
+
+  console.log("currentSlides", currentSlides);
 
   return (
-    <div className="slider">
-      {
-        sliderImages.map((image,index) => 
-            <div key={index} className="slide" style={{transform:`translateX(${-x*100}%)`}}>
-              {image}
-            </div>
-        )
-      }
-      <button className="slider-btn" id="left" onClick={slideLeft}><i class="fas fa-arrow-alt-circle-left fa-3x"></i></button>
-      <button className="slider-btn" id="right" onClick={slideRight}><i class="fas fa-arrow-alt-circle-right fa-3x"></i></button>
-      <div className="slides-nav">
-        X = {x}
-        {sliderImages.map(index =>  <i key={index} className="fas fa-circle slide-dot" id={index} onClick={index => setX(2)}></i>
-              )
-            }
-
-        
-      </div>
+    <div className="slider" ref={sliderRef}>
+      <SliderContent
+        translate={translate}
+        transition={transition}
+        width={getWidth() * currentSlides.length}
+      >
+        {currentSlides.map((slide, index) => (
+          <Slide width={getWidth()} key={slide + index} content={slide} />
+        ))}
+      </SliderContent>
+      <button className="slider-btn" id="left" handleClick={slideLeft}>
+        <i className="fas fa-arrow-alt-circle-left fa-3x"></i>
+      </button>
+      <button className="slider-btn" id="right" handleClick={slideRight}>
+        <i className="fas fa-arrow-alt-circle-right fa-3x"></i>
+      </button>
+      <div className="slides-dots"></div>
     </div>
-  )
-}
+  );
+};
 
-export default Slider
+export default Slider;

@@ -7,7 +7,7 @@ const Navbar = props => (
         <button className="toggle-button" onClick={props.openMenu}>
           <i className="fas fa-bars"></i>
         </button>
-        <span className="nav-logo"><a href="#">ShopProp</a></span>
+        <span className="nav-logo"><a href="/">ShopProp</a></span>
       </div>
 
       <div className="nav-middle">
@@ -21,13 +21,13 @@ const Navbar = props => (
             <div className="nav-item-title">Search</div>
           </li>
           <li>
-            <a href="#">
+            <a href="/">
               <div className="nav-item-icon"><i className="fas fa-user"></i></div>
               <div className="nav-item-title">Account</div>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="/">
               <div className="nav-item-icon"><i className="fas fa-shopping-cart"></i></div>
               <div className="nav-item-title">Cart</div>
             </a>
