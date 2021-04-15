@@ -88,6 +88,10 @@ nav .nav-items ul li i, nav .nav-items ul a i {
   font-size: 30px;
 }
 
+nav .nav-items:hover {
+  text-decoration: underline;
+}
+
 .side-menu {
   height: 100vh;
   background-color: #2e2e2e;
@@ -142,30 +146,24 @@ nav .nav-items ul li i, nav .nav-items ul a i {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 90vh;
+  height: 100vh;
   width: 100%;
   background-color: rgba(250, 59, 132, 0.637);
   color: white;
   overflow: hidden;
 }
 
-.slider .slide {
-  padding: 0;
-  margin: 0;
+.slider .slider-content {
   height: 100%;
+}
+
+.slider .slider-content .slide {
+  min-height: 100%;
   min-width: 100vw;
   border: blue 1px solid;
-  -webkit-transition: 1s ease;
-  transition: 1s ease;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .slider .slider-btn {
