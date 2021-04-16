@@ -11,7 +11,12 @@ const Navbar = props => (
       </div>
 
       <div className="nav-middle">
-      
+        <ul>
+          <li>Women</li>
+          <li>Men</li>
+          <li>Kids</li>
+          <li style={{color:"red"}}>Seasonal Sale!</li>
+        </ul>
       </div>
 
       <div className="nav-items">

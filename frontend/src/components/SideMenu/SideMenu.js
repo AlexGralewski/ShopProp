@@ -10,10 +10,10 @@ const SideMenu = props => {
 
     <div className={classes}>
       <ul>
-        <li>Item</li>
-        <li>Item</li>
-        <li>Item</li>
-        <li>Item</li>
+        <li>Men</li>
+        <li>Women</li>
+        <li>Kids</li>
+        <li style={{color:'red'}}>Sale</li>
       </ul>
     </div>
   )

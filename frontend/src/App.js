@@ -4,8 +4,7 @@ import SideMenu from "./components/SideMenu/SideMenu"
 import Footer from "./components/Footer"
 import Backdrop from "./components/SideMenu/Backdrop"
 import Slider from "./components/Slider/Slider"
-import Product from "./components/Product"
-import data from "./data"
+import ProductSection from "./components/Products/ProductSection"
 
 
 function App() {
@@ -29,7 +28,7 @@ function App() {
       />
       {backdrop}
       <Slider />
-      <Product image={data.image} />
+      <ProductSection />
       <Footer />
     </div>
   );
