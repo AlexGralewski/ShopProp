@@ -1,13 +1,13 @@
 import React from "react"
 
-const Slide = props => {
-  console.log("props", props)
-  return(
+const Slide = props => (
   <div 
-    style={{backgroundImage:`url(${props.content})`}} 
+    style={{backgroundImage:`url(${props.content.image})`}} 
     className="slide">
-
+      <div className="slide-title">
+        {props.content.title}
+      </div>
   </div>
-)}
+)
 
 export default Slide

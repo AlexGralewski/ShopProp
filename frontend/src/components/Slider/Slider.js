@@ -9,7 +9,17 @@ import slider3 from "../../assets/slider3.jpg";
 const getWidth = () => window.innerWidth;
 
 const Slider = () => {
-  const slides = [slider1, slider2, slider3];
+  const slides = [
+    {
+      image:slider1,
+      title:"New collection"}, 
+    {
+      image:slider2,
+      title:"Sale"}, 
+    {
+      image:slider3,
+      title:"Sale"}
+  ];
 
   const firstSlide = slides[0];
   const secondSlide = slides[1];
@@ -42,10 +52,8 @@ const Slider = () => {
       autoPlayRef.current();
     };
 
-    const smooth = (e) => {
-      if (e.target.className.includes("SliderContent")) {
-        transitionRef.current();
-      }
+    const smooth = () => {
+      transitionRef.current();
     };
 
     const resize = () => {
@@ -55,7 +63,7 @@ const Slider = () => {
     const transitionEnd = slider.addEventListener("transitionend", smooth);
     const onResize = window.addEventListener("resize", resize);
 
-    let interval = setInterval(play, 5000);
+    let interval = setInterval(play, 10000);
 
     return () => {
       slider.removeEventListener("transitionend", transitionEnd);
@@ -85,7 +93,7 @@ const Slider = () => {
 
     setState({
       ...state,
-      currentSlides,
+      currentSlides: currentSlides,
       transition: 0,
       translate: getWidth()
     });
@@ -104,8 +112,6 @@ const Slider = () => {
       activeSlide: activeSlide === 0 ? slides.length - 1 : activeSlide - 1,
     });
 
-  console.log("currentSlides", currentSlides);
-
   return (
     <div className="slider" ref={sliderRef}>
       <SliderContent
@@ -117,13 +123,13 @@ const Slider = () => {
           <Slide width={getWidth()} key={slide + index} content={slide} />
         ))}
       </SliderContent>
-      <button className="slider-btn" id="left" handleClick={slideLeft}>
+      <button className="slider-btn" id="left" onClick={slideLeft}>
         <i className="fas fa-arrow-alt-circle-left fa-3x"></i>
       </button>
-      <button className="slider-btn" id="right" handleClick={slideRight}>
+      <button className="slider-btn" id="right" onClick={slideRight}>
         <i className="fas fa-arrow-alt-circle-right fa-3x"></i>
       </button>
-      <div className="slides-dots"></div>
+      <Dots slides={slides} activeSlide={activeSlide} />
     </div>
   );
 };

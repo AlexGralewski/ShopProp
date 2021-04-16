@@ -6,7 +6,8 @@ const SliderContent = props => (
     className="slider-content" 
     style={{
       transition:`transform ease-out ${props.transition}s`,
-      transform:`translateX(-${props.translate}px)`}}>
+      transform:`translateX(-${props.translate}px)`,
+      width: `${props.width}px`}}>
     {props.children}
   </div>
 )
