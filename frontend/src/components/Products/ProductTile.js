@@ -1,7 +1,7 @@
 import React from "react"
 
 const Product = props => {
-  const {name, price, image, rating} = props
+  const {name, price, image} = props
 
   return(
     <div className="product-tile">

@@ -5,7 +5,7 @@ import Footer from "./components/Footer"
 import Backdrop from "./components/SideMenu/Backdrop"
 import Slider from "./components/Slider/Slider"
 import ProductSection from "./components/Products/ProductSection"
-
+import Cart from "./components/Cart/Cart"
 
 function App() {
   const [isMenuOpen, setMenuOpen] = useState(false)
@@ -29,6 +29,7 @@ function App() {
       {backdrop}
       <Slider />
       <ProductSection />
+      <Cart />
       <Footer />
     </div>
   );
