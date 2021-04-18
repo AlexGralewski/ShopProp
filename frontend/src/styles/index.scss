@@ -21,8 +21,9 @@ button:focus {
 }
 
 nav {
-  max-width: 100%;
-  padding: 20px;
+  position: fixed;
+  width: 100%;
+  padding: 20px 0;
   height: 50px;
   background-color: black;
   color: white;
@@ -30,13 +31,14 @@ nav {
   justify-content: space-between;
   align-items: center;
   text-transform: uppercase;
-
+  z-index: 200;
   .nav-logo {
-    margin: 0 10px;
-    font-size: 30px;    
+    padding: 20px;
+    font-size: 30px; 
   }
 
   .toggle-button {
+    margin: 0 0 0 20px;
     font-size: 25px;
     width: 40px;
     height: 40px;
@@ -63,6 +65,7 @@ nav {
   .nav-items {
     width: 300px;
     font-size: 10px;
+    padding: 0 20px;
     ul {
       display: flex;
       justify-content: space-around;
@@ -206,6 +209,7 @@ nav {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   
   .product-tile {
 
@@ -237,6 +241,61 @@ nav {
     .product-price {
       font-weight: 600;
     }
+  }
+}
+
+.cart {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  .cart-main {
+    background-color: rgb(255, 255, 209);
+    width: 60%;
+    .cart-items {
+      margin: 20px;
+      background-color: white;
+      .cart-product {
+        height: 200px;
+        display: flex;
+        background-color: white;
+        margin: 30px 0;
+        justify-content: space-between;
+        .cp-image {
+          height: 100%;
+          width: 150px;
+          background-position: center;
+          background-size: cover;
+        }
+        button {
+          background: none;
+          border: none;
+          border-radius: 50%;
+          width: 50px;
+          height: 50px;
+          position: relative;
+          transition: 0.2s ease-out;
+          p {
+            display: none;
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            bottom: -50px;
+          }
+        }
+        button:hover {
+          background-color: grey;
+          color: white;
+          p {
+            display: block;
+            color: black;
+          }
+        }
+      }
+    }
+  }
+  .cart-summary {
+    background-color: rgb(201, 201, 201);
+    width: 40%;
   }
 }
 
