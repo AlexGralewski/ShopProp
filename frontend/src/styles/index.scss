@@ -1,11 +1,20 @@
 //color scheme
 $light_grey: #f1f1f1;
 
+button,body {
+  font-family: 'Roboto', sans-serif;
+}
 
+
+input {
+  border: none;
+  background-color: none;
+}
+
+//contains general styles for elements
 body {
   margin: 0;
-  font-family: 'Roboto', sans-serif;
-
+  
   .app {
     height: 100%;
     display: flex;
@@ -17,7 +26,7 @@ body {
     font-size: 50px;
     font-weight: 400;
   }
-
+  
   ul {
     list-style: none;
   }
@@ -27,11 +36,67 @@ body {
     color: inherit;
   }
   
-  button:focus {
+  .black-button {
+    background: black;
+    color: white;
+    padding: 20px;
+    width: 70%;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin: 20px 0;
+  }
+  button:focus,input:focus {
     outline: none;
   }
-}
+  .value-selection {
+    position: relative;
+    text-transform: uppercase;
+    button {
+      background-color: white;
+      border: $light_grey solid 1px;
+      padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      cursor: pointer;
+      width: 100%;
+      text-transform: uppercase;
+      i {
+        color: grey;
+      }
+    }
+    .values-list {
+      display: none;
+      flex-direction: column;
+      padding:0;
+      position: absolute;
+      top: 0;
+      z-index: 200;
+      background-color: white;
+      width: 100%;
+      border: $light_grey solid 1px;
+      input {
+        border-top: $light_grey solid 1px;
+        padding: 20px 30px;
+        cursor: pointer;
+        background: none;
+        text-align: left;
+      }
+      input:hover {
+        background-color: $light_grey;
+      }
+      input:focus {
+        border: none;
+      }
+    }
+    .visible {
+      display: flex;
+    }
 
+  }
+}
 
 nav {
   position: fixed;
@@ -269,7 +334,7 @@ nav {
     margin: 40px;
   }
   .cart-main {
-    width: 60%;
+    width: 65%;
     .cart-items {
       margin: 20px;
       background-color: white;
@@ -284,7 +349,7 @@ nav {
           background-position: center;
           background-size: cover;
         }
-        button {
+        .cp-remove {
           background: none;
           border: none;
           border-radius: 50%;
@@ -330,21 +395,23 @@ nav {
   }
   .cart-summary {
     background-color: $light_grey;
-    width: 40%;
+    width: 35%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 30px;
+    padding: 100px;
     hr {
       background-color: rgb(218, 218, 218);
       height: 1px;
       width: 80%;
-      border:none
+      max-width: 500px;
+      border:none;
     }
     div {
       margin: 20px;
       display: flex;
       justify-content: space-between;
+      max-width: 500px;
       width: 80%;
       text-transform: uppercase;
       font-size: 20px;
@@ -354,71 +421,76 @@ nav {
       font-weight: bold;
     }
     button {
-      background: black;
-      color: white;
-      padding: 10px;
-      width: 70%;
-      border: none;
-      cursor: pointer;
-      font-size: 15px;
-      font-weight: 500;
-      letter-spacing: 1px;
-      margin: 20px;
+      max-width: 500px;
+      width:100%;
     }
 
   }
 }
 
 .product-card {
+  margin: 10px;
   min-height: 100vh;
   width: 90%;
-  background-color: rgb(231, 231, 231);
   display: flex;
-  justify-content: space-around;
-
-  .gallery {
+  .gallery-description-wrapper {
     display: flex;
-    align-items: flex-start;
-    height: 600px;
-    ul{
-      width: 100px;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 50%;
+    .gallery {
       display: flex;
-      flex-direction: column;
       align-items: center;
-      li {
-        height: 100px;
-        width: 70px;
-        margin-bottom: 5px;
-        background-size: cover;
+      height: 600px;
+      ul{
+        width: 100px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        li {
+          height: 100px;
+          width: 70px;
+          margin-bottom: 5px;
+          background-size: cover;
+          background-position: center;
+          
+        }
+      }
+      
+      .big-picture {
+        width: 400px;
+        height: 600px;
         background-position: center;
-
+        background-size: cover;
       }
     }
-
-    .big-picture {
-      width: 400px;
-      height: 600px;
-      background-position: center;
-      background-size: cover;
+    .product-description {
+      margin: 50px;
     }
   }
   .product-card-info {
+    margin: 50px 100px;
     width: 50%;
     display: flex;
     flex-direction: column;
     text-transform: capitalize;
+    position: sticky;
+    top: 20%;
+    height: 30%;
     button {
-      width: 80%;
+      width: 400px;
     }
+
+
   }
 }
-
-footer {
-  height: 50px;
-  background-color: $light_grey;
-  border-top: rgb(209, 209, 209) solid 1px;
-  display: flex;
-  align-items: center;
+  
+  footer {
+    height: 50px;
+    background-color: $light_grey;
+    border-top: rgb(209, 209, 209) solid 1px;
+    display: flex;
+    align-items: center;
   justify-content: center;
   width: 100%;
 
