@@ -6,13 +6,10 @@ import ProductTile from "./ProductTile"
 const ProductSection = () => (
   <div className="product-section">
     {
-      data.products.map((item,index) => 
+      data.products.map((item) => 
         <ProductTile 
-          name={item.name}  
-          price={item.price}  
-          rating={item.rating}  
-          image={item.image}  
-          key={index} />
+          product={item}
+          key={item.id} />
       )
     }
   </div>

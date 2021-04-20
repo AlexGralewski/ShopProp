@@ -1,16 +1,20 @@
 import React from "react"
+import {Link} from "react-router-dom"
 
 const Product = props => {
-  const {name, price, image} = props
+  const {product} = props
 
   return(
-    <div className="product-tile">
-      <div className="image-wrap">
-        <div className="product-image" style={{backgroundImage:`url(${image})`}} />
+    <Link to={`/product/${product.id}`}>
+      <div className="product-tile">
+        
+        <div className="image-wrap">
+          <div className="product-image" style={{backgroundImage:`url(${product.image})`}} />
+        </div>
+        <div className="product-name">{product.name}</div>
+        <div className="product-Price">{product.price}$</div>
       </div>
-      <div className="product-name">{name}</div>
-      <div className="product-Price">{price}$</div>
-    </div>
+    </Link>
 )}
 
 

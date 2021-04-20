@@ -1,4 +1,5 @@
 import React from "react"
+import {Link} from "react-router-dom"
 
 const SideMenu = props => {
   let classes = "side-menu"
@@ -10,10 +11,10 @@ const SideMenu = props => {
 
     <div className={classes}>
       <ul>
-        <li>Men</li>
-        <li>Women</li>
-        <li>Kids</li>
-        <li style={{color:'red'}}>Sale</li>
+        <li><Link to="/products">Women</Link></li>
+        <li><Link to="/products">Men</Link></li>
+        <li><Link to="/products">Kids</Link></li>
+        <li style={{color:'red'}}><Link to="/products">Seasonal Sale</Link></li>
       </ul>
     </div>
   )

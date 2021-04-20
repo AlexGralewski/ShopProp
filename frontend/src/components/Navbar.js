@@ -1,4 +1,5 @@
 import React from "react"
+import {Link} from "react-router-dom"
 
 
 const Navbar = props => (
@@ -7,15 +8,15 @@ const Navbar = props => (
         <button className="toggle-button" onClick={props.openMenu}>
           <i className="fas fa-bars"></i>
         </button>
-        <span className="nav-logo"><a href="/">ShopProp</a></span>
+        <span className="nav-logo"><Link to="/">ShopProp</Link></span>
       </div>
 
       <div className="nav-middle">
         <ul>
-          <li>Women</li>
-          <li>Men</li>
-          <li>Kids</li>
-          <li style={{color:"red"}}>Seasonal Sale!</li>
+          <li><Link to="/products">Women</Link></li>
+          <li><Link to="/products">Men</Link></li>
+          <li><Link to="/products">Kids</Link></li>
+          <li style={{color:"red"}}><Link to="/products">Seasonal sale</Link></li>
         </ul>
       </div>
 
@@ -32,10 +33,10 @@ const Navbar = props => (
             </a>
           </li>
           <li>
-            <a href="/">
+            <Link to="/cart">
               <div className="nav-item-icon"><i className="fas fa-shopping-cart"></i></div>
               <div className="nav-item-title">Cart</div>
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import ExpandableList from "../ExpandableList";
 
 const Product = (props) => {
   const { name, price, image, size } = props;
@@ -18,7 +19,7 @@ const Product = (props) => {
           </button>
         </div>
         <div className="cp-bottom">
-          <p>1</p>
+          <ExpandableList width="200px" id="quantity" />
           <p>{price}$</p>
         </div>
       </div>
